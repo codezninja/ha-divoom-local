@@ -1,0 +1,30 @@
+custom_components/divoom_local/services.yaml
+  h_af8cbfb5485e65 1-12
+tests/test_api.py
+  h_af8cbfb5485e65 201-222
+README.md
+  h_af8cbfb5485e65 45-59
+tests_ha/test_flow_and_entities.py
+  h_af8cbfb5485e65 97-124
+custom_components/divoom_local/strings.json
+  h_af8cbfb5485e65 7-9,13-16,30-32,47-50,54-74
+custom_components/divoom_local/__init__.py
+  h_af8cbfb5485e65 8-10,12-23,71-109
+custom_components/divoom_local/translations/en.json
+  h_af8cbfb5485e65 7-9,13-16,30-32,47-50,54-74
+custom_components/divoom_local/manifest.json
+  h_af8cbfb5485e65 11
+custom_components/divoom_local/api.py
+  h_af8cbfb5485e65 102-115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "b13b54be6b7b67a6be6fa0294aedcdda5cd4719c",
+  "prompts": {},
+  "humans": {
+    "h_af8cbfb5485e65": {
+      "author": "Ezbon Jacob <ezjacob@gmail.com>"
+    }
+  }
+}
