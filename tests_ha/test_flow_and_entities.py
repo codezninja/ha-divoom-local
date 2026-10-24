@@ -94,3 +94,31 @@ async def test_bad_token_at_runtime_starts_reauth(hass):
         await hass.async_block_till_done()
     flows = hass.config_entries.flow.async_progress()
     assert any(f["context"]["source"] == "reauth" for f in flows)
+
+
+async def test_send_command_service(hass):
+    import pytest
+    from homeassistant.exceptions import ServiceValidationError
+
+    entry = MockConfigEntry(domain=DOMAIN, unique_id="300123",
+                            data={"host": "10.69.5.60", "port": 9000, "model": "timesframe"})
+    entry.add_to_hass(hass)
+    base = "custom_components.divoom_local.api.TimesFrameClient."
+    with patch(base + "get_state", AsyncMock(return_value=DisplayState(True, 50, "300123"))), \
+         patch(base + "_command", AsyncMock(return_value={"ReturnCode": 0, "ClockId": 7})) as cmd:
+        assert await hass.config_entries.async_setup(entry.entry_id)
+        await hass.async_block_till_done()
+        reply = await hass.services.async_call(
+            DOMAIN, "send_command",
+            {"config_entry_id": entry.entry_id, "payload": {"Command": "Channel/GetClockInfo"}},
+            blocking=True, return_response=True)
+        assert reply == {"ReturnCode": 0, "ClockId": 7}
+        cmd.assert_awaited_with("Channel/GetClockInfo", {})
+        with pytest.raises(ServiceValidationError):
+            await hass.services.async_call(
+                DOMAIN, "send_command",
+                {"config_entry_id": "nope", "payload": {"Command": "x"}}, blocking=True)
+        with pytest.raises(ServiceValidationError):
+            await hass.services.async_call(
+                DOMAIN, "send_command",
+                {"config_entry_id": entry.entry_id, "payload": {"NoCommand": 1}}, blocking=True)

@@ -99,6 +99,20 @@ class DivoomClient:
             raise DivoomError(f"reboot is not supported on {self.model}")
         await self._command("Device/SysReboot")
 
+    async def send_command(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """Send an arbitrary command object and return the device's reply.
+
+        ``payload`` must contain a ``Command`` string. Transport details
+        (method, URL, LocalToken) are added for the device's model.
+        """
+        if not isinstance(payload, dict):
+            raise ValueError("payload must be an object")
+        command = payload.get("Command")
+        if not isinstance(command, str) or not command:
+            raise ValueError("payload needs a Command string")
+        params = {k: v for k, v in payload.items() if k not in ("Command", "LocalToken")}
+        return await self._command(command, params)
+
     def _extra_fields(self) -> dict[str, Any]:
         return {}
 

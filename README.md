@@ -42,6 +42,21 @@ Give each device a DHCP reservation. Re adding a device at a new IP updates the 
 
 The request bodies are JSON. Divoom's own docs live at docin.divoom-gz.com; the transport details above match what the community TimesFrame and Times Gate projects observed on real hardware.
 
+## Advanced: send_command
+
+`divoom_local.send_command` sends any command object to a device and returns its reply. The integration adds transport details itself (GET vs POST, the Times Gate LocalToken).
+
+```yaml
+action: divoom_local.send_command
+data:
+  config_entry_id: <your entry id>
+  payload:
+    Command: Channel/GetClockInfo
+response_variable: reply
+```
+
+Use it for features this integration does not wrap yet, such as TimesFrame custom layouts (`Device/EnterCustomControlMode`, then `Device/ExitCustomControlMode` plus `Channel/SetClockSelectId` to restore the previous face).
+
 ## Security notes
 
 The TimesFrame API has no authentication, and the Times Gate LocalToken is a static number. Anything that can reach these devices can control them. Keep them on a trusted network or VLAN and never forward their ports.

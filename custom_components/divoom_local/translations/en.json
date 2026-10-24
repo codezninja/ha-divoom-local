@@ -4,11 +4,16 @@
       "user": {
         "title": "Divoom Local",
         "description": "Which device are you adding? Everything stays on your network.",
-        "data": { "model": "Device" }
+        "data": {
+          "model": "Device"
+        }
       },
       "timesframe": {
         "title": "TimesFrame",
-        "data": { "host": "Host or IP", "port": "Port" }
+        "data": {
+          "host": "Host or IP",
+          "port": "Port"
+        }
       },
       "times_gate": {
         "title": "Times Gate",
@@ -22,7 +27,9 @@
       "reauth_confirm": {
         "title": "New LocalToken",
         "description": "The Times Gate rejected its LocalToken, usually after re pairing in the Divoom app. Enter the current one.",
-        "data": { "local_token": "LocalToken" }
+        "data": {
+          "local_token": "LocalToken"
+        }
       }
     },
     "error": {
@@ -37,10 +44,33 @@
   },
   "selector": {
     "model": {
-      "options": { "timesframe": "TimesFrame", "times_gate": "Times Gate" }
+      "options": {
+        "timesframe": "TimesFrame",
+        "times_gate": "Times Gate"
+      }
     }
   },
   "entity": {
-    "light": { "display": { "name": "Display" } }
+    "light": {
+      "display": {
+        "name": "Display"
+      }
+    }
+  },
+  "services": {
+    "send_command": {
+      "name": "Send command",
+      "description": "Send a raw command object to a Divoom device and return its reply. For advanced use, such as custom layouts.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Device",
+          "description": "The Divoom Local entry to send to."
+        },
+        "payload": {
+          "name": "Payload",
+          "description": "Command object, for example {\"Command\": \"Channel/GetClockInfo\"}. Transport fields such as LocalToken are added automatically."
+        }
+      }
+    }
   }
 }

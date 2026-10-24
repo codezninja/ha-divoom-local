@@ -198,3 +198,25 @@ def test_urls_and_factory():
     ):
         with pytest.raises(ValueError):
             bad()
+
+
+async def test_send_command_frame(frame):
+    fake, client = frame
+    reply = await client.send_command({"Command": "Channel/GetClockInfo"})
+    assert reply["DeviceId"] == 300123
+    await client.send_command({"Command": "Device/ExitCustomControlMode"})
+    assert fake.calls[-1] == ("GET", {"Command": "Device/ExitCustomControlMode"})
+
+
+async def test_send_command_gate_adds_token_and_ignores_callers(gate):
+    fake, client = gate
+    await client.send_command({"Command": "Channel/GetAllConf", "LocalToken": 1})
+    assert fake.calls[-1][1] == {"Command": "Channel/GetAllConf", "LocalToken": TOKEN}
+
+
+@pytest.mark.parametrize("payload", [{}, {"Command": ""}, {"Command": 5}, ["x"]])
+async def test_send_command_rejects_bad_payload(frame, payload):
+    fake, client = frame
+    with pytest.raises(ValueError):
+        await client.send_command(payload)
+    assert fake.calls == []

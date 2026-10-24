@@ -1,0 +1,12 @@
+send_command:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: divoom_local
+    payload:
+      required: true
+      example: '{"Command": "Channel/GetClockInfo"}'
+      selector:
+        object:
