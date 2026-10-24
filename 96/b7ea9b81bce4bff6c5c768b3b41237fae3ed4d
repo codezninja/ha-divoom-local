@@ -1,0 +1,65 @@
+custom_components/divoom_local/entity.py
+  h_af8cbfb5485e65 1-26
+custom_components/divoom_local/const.py
+  h_af8cbfb5485e65 1-9
+requirements_test_ha.txt
+  h_af8cbfb5485e65 1
+pytest.ini
+  h_af8cbfb5485e65 1-3
+custom_components/divoom_local/button.py
+  h_af8cbfb5485e65 1-35
+custom_components/divoom_local/config_flow.py
+  h_af8cbfb5485e65 1-151
+custom_components/divoom_local/translations/en.json
+  h_af8cbfb5485e65 1-46
+.gitignore
+  h_af8cbfb5485e65 1-4
+custom_components/divoom_local/light.py
+  h_af8cbfb5485e65 1-64
+custom_components/divoom_local/strings.json
+  h_af8cbfb5485e65 1-46
+tests_ha/test_flow_and_entities.py
+  h_af8cbfb5485e65 1-96
+tests_ha/conftest.py
+  h_af8cbfb5485e65 1-8
+hacs.json
+  h_af8cbfb5485e65 1-5
+LICENSE
+  h_af8cbfb5485e65 1-21
+.github/workflows/ci.yml
+  h_af8cbfb5485e65 1,6-38
+  s_3e9712d0d78891::t_9996836c06569c 2-5
+README.md
+  h_af8cbfb5485e65 1-61
+custom_components/divoom_local/api.py
+  h_af8cbfb5485e65 1-208
+custom_components/divoom_local/__init__.py
+  h_af8cbfb5485e65 1-68
+tests/test_api.py
+  h_af8cbfb5485e65 1-200
+requirements_test.txt
+  h_af8cbfb5485e65 1-3
+custom_components/divoom_local/manifest.json
+  h_af8cbfb5485e65 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "96b7ea9b81bce4bff6c5c768b3b41237fae3ed4d",
+  "prompts": {},
+  "humans": {
+    "h_af8cbfb5485e65": {
+      "author": "Ezbon Jacob <ezjacob@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_3e9712d0d78891": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a16d6f-24be-70ac-8c92-c400f765abdf",
+        "model": "claude-sonnet-5.5"
+      },
+      "human_author": null
+    }
+  }
+}
