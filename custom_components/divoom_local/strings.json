@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Divoom Local",
+        "description": "Which device are you adding? Everything stays on your network.",
+        "data": { "model": "Device" }
+      },
+      "timesframe": {
+        "title": "TimesFrame",
+        "data": { "host": "Host or IP", "port": "Port" }
+      },
+      "times_gate": {
+        "title": "Times Gate",
+        "description": "The LocalToken is shown in the Divoom app under the device's settings. Hardware revision 400 is the original model; 402 is the newer one.",
+        "data": {
+          "host": "Host or IP",
+          "local_token": "LocalToken",
+          "revision": "Hardware revision"
+        }
+      },
+      "reauth_confirm": {
+        "title": "New LocalToken",
+        "description": "The Times Gate rejected its LocalToken, usually after re pairing in the Divoom app. Enter the current one.",
+        "data": { "local_token": "LocalToken" }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the device at that address.",
+      "invalid_auth": "The device rejected the LocalToken.",
+      "invalid_response": "Something answered, but it did not look like that device."
+    },
+    "abort": {
+      "already_configured": "This device is already set up.",
+      "reauth_successful": "LocalToken updated."
+    }
+  },
+  "selector": {
+    "model": {
+      "options": { "timesframe": "TimesFrame", "times_gate": "Times Gate" }
+    }
+  },
+  "entity": {
+    "light": { "display": { "name": "Display" } }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "domain": "divoom_local",
+  "name": "Divoom Local",
+  "codeowners": ["@codezninja"],
+  "config_flow": true,
+  "documentation": "https://github.com/codezninja/ha-divoom-local",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/codezninja/ha-divoom-local/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
